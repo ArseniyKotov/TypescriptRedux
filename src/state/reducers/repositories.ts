@@ -6,8 +6,8 @@
 
 **/
 
-import { Action } from "../actions";
-import { ActionType } from "../actions/types";
+import { Action } from "../actionCreators/actions";
+import { ActionType } from "../actionCreators/actions/types";
 
 interface RepositoriesState {
   loading: boolean;
@@ -15,8 +15,14 @@ interface RepositoriesState {
   data: string[];
 }
 
-const reducer = (
-  state: RepositoriesState,
+const initialState = {
+  loading: false,
+  error: null,
+  data: [],
+};
+
+export const repositories = (
+  state: RepositoriesState = initialState,
   action: Action
 ): RepositoriesState => {
   switch (action.type) {
@@ -30,5 +36,3 @@ const reducer = (
       return state;
   }
 };
-
-export default reducer;
